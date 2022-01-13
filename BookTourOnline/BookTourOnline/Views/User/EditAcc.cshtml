@@ -1,0 +1,87 @@
+﻿@model Model.EF.TaiKhoan
+
+@{
+    ViewBag.Title = "Cập nhật tài khoản";
+    Layout = "~/Views/Shared/_LayoutCart.cshtml";
+}
+
+
+<div class=" row no-margin no-padding" style="width:90%; margin: 30px auto !important;">
+    <div class="row">
+        <div class="col-md-12 row">
+            <div class="col-md-7 " style="margin:0px auto; padding:40px 40px; background-color:#fff; border-radius:5px;box-shadow:0px 10px 8px -5px #7f8fa6 !important;">
+                <h4>Tài khoản của tôi</h4>
+                <h6>Quản lý thông tin tài khoản để bảo mật tài khoản</h6>
+                <br />
+               
+                @using (Html.BeginForm("EditAcc","User", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                  
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @*@Html.HiddenFor(model => model.TenDangNhap)*@
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.TenDangNhap, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                       <span>Tên đăng nhập</span>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "form-control w-100", @value = @ViewBag.userName, @readonly = "readonly" } })
+                           @* <input class = "form-control" name="TenDangNhap" disabled value="@Model.TenDangNhap" />*@
+                            @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @* @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <span>Email</span>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @* @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <span>Số điện thoại</span>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @* @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <span>Địa chỉ</span>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @* @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <span>Họ tên</span>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Lưu" style="background-color: #a5190e; color:#fff; border:none;padding:8px 10px; border-radius:5px;" />
+                        </div>
+                        <br />
+                        <div class="col-md-offset-2 col-md-10">
+                            <a href="/Home/Index" style=" text-decoration: none; font-size: 15px; background:#7f8fa6; color:brown;padding:10px 20px;border-radius:5px">Hủy bỏ</a>
+                        </div>
+                    </div>
+                </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+
+             

@@ -1,0 +1,17 @@
+.customer-infor h5 {
+    color: #fff;
+}
+
+.customer-infor p {
+    color: #fff;
+}
+
+.customer-infor .required {
+    color: red;
+}
+
+.block-input-group--input {
+    border: 0px;
+    outline: none;
+    padding: 5px 10px;
+}

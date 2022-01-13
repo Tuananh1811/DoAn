@@ -1,0 +1,193 @@
+﻿@model  Model.EF.Tour
+@{
+    ViewBag.Title = "Detail";
+
+    Layout = "~/Views/Shared/_layoutDetail.cshtml";
+    var category = (Model.EF.DanhMuc)ViewBag.Category;
+    var relatedTours = (List<Model.EF.Tour>)ViewBag.RelatedTour;
+    var ListImgRelatedTour = (List<Model.EF.HinhAnh>)ViewBag.ListImgRelatedTour;
+}
+@section style{
+
+    <link href="~/Assets/Client/Css/tourdetail.css" rel="stylesheet" />
+    <link href="~/Assets/Client/Css/slick.css" rel="stylesheet" />
+}
+<div class="container-fluid" style="text-align:left; background-color:#fff;z-index:5;">
+
+    <div class="container-fluid no-margin">
+        <div class="block-img-detail">
+            <img src="~/wwwroot/images/@Model.HinhAnh" alt="">
+            <h1 class="title-detail text-center en">
+                @Model.DiaDiem
+            </h1>
+        </div>
+    </div>
+    <div class="container-content-detail row no-margin no-padding">
+
+        <div class="col-lg-5 col-md-6 col-sm-6 container-content-detail-left">
+            <div class="row no-padding no-margin col-lg-12 ">
+                <div class="box-big-img ">
+                    <a href="#">
+                        <img src="~/wwwroot/images/@Model.HinhAnh" alt="" id="big-img">
+                    </a>
+                </div>
+                <div class="box-images-list col-lg-12 no-padding no-margin">
+                    <ul class="row no-margin no-padding">
+                        @foreach (var item in ListImgRelatedTour)
+                        {
+                            <li class="col-lg-2 col-md-3 col-sm-2 col-3 no-margin no-padding ">
+                                <a href="#">
+                                    <img src="~/wwwroot/images/@item.TenHinhAnh" alt="" class="small-img">
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-6 col-sm-6 container-content-detail-right">
+            <div class="title-block-detail">
+                <h4>@Model.TenTour</h4>
+                <div class="description">
+
+                    <p><b>Địa điểm: </b>@Model.DiaDiem</p>
+                    <p><b>Quy mô: </b><span>@Model.QuyMo</span></p>
+                    <p><b>Thời gian: </b> <span>@Model.ThoiGian</span> </p>
+                    <p><b>Phương tiện: </b> <span>@Model.PhuongTien</span></p>
+                    <p><b>Khởi hành: </b> <span>@Model.KhoiHanh</span></p>
+
+                    <p><b>Giá tour trọn gói từ: </b> <span>@(Model.Gia.HasValue?Model.Gia.Value.ToString("N0"):"Liên hệ") VNĐ/ khách</span></p>
+                    <p><b>Giới thiệu chung:</b></p>
+                    <p class="general-intro">
+                        @Model.GioiThieu
+                    </p>
+                    <p>
+                        <button name="" class="btn-outline-danger text-white bg-danger btn-book-tour" style="        background: url(/Assets/Client/images/bg-red-pattern.png) 50%;
+                                        max-width: 130px;
+                                        width: 120px;
+                                        background: url(~/Assets/Client/images/bg-red-pattern.png) 50% ;
+                                        background-size: 50px;
+                                        color: #fff !important;
+                                        display: inline-block;
+                                        margin: 0;
+                                        padding: 10px;
+                                        text-transform: uppercase;
+                                        font-weight: 600;">
+                            <a href="/them-gio-hang?tourId=@Model.MaTour&soLuong=1" style="color:#fff !important;">Đặt tour</a>
+                        </button>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="container-fluid no-margin no-padding block-schedule">
+            <h6 style="       background: url(/Assets/Client/images/bg-red-pattern.png) 50%;
+                              background-size: 50px;
+                              color: #fff;
+                               display: inline-block;
+                            margin: 0;
+                            padding: 10px 20px;
+                            text-align: left !important;
+                            text-transform: uppercase;
+                            font-size: 15px;
+                            margin-bottom: 20px;
+                            border-bottom: 1px solid #ccc !important;
+                            letter-spacing: 1px;">
+                Lịch trình tour
+            </h6>
+            @Html.Raw(Model.LichTrinhTour)
+            <h6 style=" background: url( /Assets/Client/images/bg-red-pattern.png) 50%;
+            background-size: 50px;
+            color: #fff;
+            display: inline-block;
+            margin: 0;
+            padding: 10px 20px;
+            text-align: left !important;
+            text-transform: uppercase;
+            font-size: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc !important;
+            letter-spacing: 1px;">
+                bao gồm
+            </h6>
+            <div class="block-schedule-content">
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Tour bao gồm</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                            Tour không
+                            bao gồm
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">
+                            Điều khoản
+                            hủy tour
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="block-content-schedule-detail">
+                            @Html.Raw(Model.TourBaoGom)
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="block-content-schedule-detail">
+                            @Html.Raw(Model.TourKhongBaoGom)
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="block-content-schedule-detail">
+                            @Html.Raw(Model.DieuKhoanHuyTour)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<div id="inspired">
+    <div class="inspired">
+        <h4 class="section-heading text-uppercase gothambold">
+            Các địa điểm du lịch liên quan
+        </h4>
+    </div>
+</div>
+<div class="row no-padding no-margin slick">
+
+    <div class="slick-product  row responsive autoplay multiple-items center">
+
+        @foreach (var item in relatedTours)
+        {
+            var url = "/chi-tiet/" + @item.TenTour + "-" + item.MaTour;
+            <div class="col-lg-2 col-md-3 col-sm-4 col-6  style_product-slick">
+                <article class="product-img-slick no-padding">
+                    <a href="@url">
+
+                        <img src="~/wwwroot/images/@item.HinhAnh" class="product-img-slick-style w-100">
+                        <div class="inspire--desc">
+                            <h6>@item.DiaDiem</h6>
+                            <p class="montserrat-bold">
+                                @item.TenTour
+                                <br>
+
+                            </p>
+
+                        </div>
+                    </a>
+                </article>
+            </div>
+        }
+
+    </div>
+
+</div>
+

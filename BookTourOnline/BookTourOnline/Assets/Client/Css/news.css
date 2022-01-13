@@ -1,0 +1,90 @@
+.block-news {
+    margin: 0 auto !important;
+    justify-content: center;
+}
+
+.inspire--desc-news {
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: #EBEBEB;
+}
+
+.block-new-item {
+    margin-bottom: 20px !important;
+}
+
+.block-news-sub {
+    border: 1px solid black;
+}
+
+.inspire--desc-news h6 {
+    padding-top: 10px;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    /* font-family: VNFGothamBold,Helvetica,Arial,sans-serif; */
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.montserrat-bold-new {
+    font-size: 13px;
+}
+
+.block-travel-toolkit {
+    width: 70% !important;
+    margin: 20px auto !important;
+    padding: 40px 20px;
+}
+
+.block-toolkit-item {
+    justify-content: center !important;
+    margin-top: 40px !important;
+}
+
+#travel-toolkit {
+    text-align: center;
+}
+
+.section-heading,
+.section-desc {
+    text-align: center;
+}
+
+.toolkit-item {
+    margin-right: 30px;
+}
+
+.toolkit-item .thumbnail {
+    border: none!important;
+    height: 120px;
+}
+
+.thumbnail a>img,
+.thumbnail>img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.toolkit-item img {
+    height: 80px !important;
+}
+
+.toolkit-item .caption {
+    margin-bottom: 5px!important;
+    padding-top: 20px!important;
+}
+
+.thumbnail .caption {
+    padding: 9px;
+    color: #333;
+    font-size: 13px;
+    letter-spacing: 1px;
+}

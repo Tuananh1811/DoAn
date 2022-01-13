@@ -1,0 +1,52 @@
+﻿@*@model  BookTourOnline.Common.UserLogin*@
+@*@model BookTourOnline.Common.UserLogin*@
+@{
+    var session = (BookTourOnline.Common.UserLogin)Session[BookTourOnline.Common.CommonConstants.USERCLIENT_SESSION];
+}
+
+<div class="container-fluid row header-top">
+    <div class="col-lg-6 col-md-5 col-sm-5 col-5 row">
+        <div class="col-lg-1 col-md-2 col-sm-3 col-3 no-padding">
+            <i class="fab fa-facebook-square"></i>
+        </div>
+        <div class="col-lg-1 col-md-2 col-sm-3 col-3 no-padding"><i class="fas fa-envelope"></i></div>
+        <div class="col-lg-3 col-md-5 col-sm-6 col-6 no-padding"><i class="fas fa-phone-square"></i> 0981580436</div>
+
+    </div>
+
+    <div class="col-lg-6 col-md-7 col-sm-7 col-7 no-margin no-padding" style="font-size:16px; justify-content:right;">
+        <ul class="row " style="text-align: right;color: #b2910e;justify-content: flex-end;" >
+
+
+            <li class="nav-item menu-user col-lg-3 col-md-4 col-sm-4 col-4">
+                <a class="nav-link no-padding" href="/Contact/Index" style="color: #b2910e !important;">Liên hệ  <i class="fas fa-file-signature" style="font-size:14px;"></i> </a>
+
+            </li>
+            @if (session == null)
+            {
+                <li class="nav-item menu-user col-lg-3 col-md-4 col-sm-4 col-4">
+                    <a class="nav-link no-padding" href="/User/Login" style="color: #b2910e !important;">Đăng nhập <i class="fas fa-sign-in-alt" style="font-size:14px;"></i> </a>
+
+                </li>
+                <li class="nav-item menu-user col-lg-2 col-md-4 col-sm-4 col-4">
+                    <a class="nav-link no-padding" href="/User/Register" style="color: #b2910e !important;">Đăng ký <i class="fas fa-user" style="font-size:14px;"></i> </a>
+
+                </li>
+            }
+            else
+            {
+                <li class="nav-item menu-user col-lg-3 col-md-4 col-sm-4 col-4" style="position: relative;top:0px" >
+                    @session.UserName <i class="fas fa-user" style="font-size:14px;"></i>
+                                      <ul class="sub-menu" style="width:500px">
+                                          <li><a href="@Url.Action("EditAcc","User", new{ tendangnhap=session.UserName})">Cập nhật tài khoản</a></li>
+                                          <li><a href="@Url.Action("EditPassAcc","User", new{ tendangnhap=session.UserName})">Thay đổi mật khẩu</a></li>
+                                          <li><a href="@Url.Action("Index","OrderDetail",new { tendangnhap=session.email})">Lịch sử đặt tour</a></li>
+                                         
+                                          <li class="nav-item menu-user col-lg-2 col-md-4 col-sm-4 col-4">@Html.ActionLink("Đăng xuất", "Logout", "User")</li>
+                                      </ul>
+                </li>
+               
+            }
+        </ul>
+    </div>
+</div>

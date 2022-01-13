@@ -1,0 +1,101 @@
+﻿@model BookTourOnline.Models.LoginModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Assets/Admin/images/icons/favicon.ico" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Assets/Admin/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Assets/Admin/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Assets/Admin/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Assets/Admin/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Assets/Admin/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Assets/Admin/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Assets/Admin/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="~/Assets/Admin/images/img-01.png" alt="IMG">
+                </div>
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                {
+                    <span style="font-size:25px; text-align:center; display:block; margin:15px 0px; text-transform:uppercase; font-weight:bold; color:green;" >
+                        Đăng nhập hệ thống
+                    </span>
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    <div class="wrap-input100 validate-input" data-validate="Valid user name is required">
+                        @*<input class="input100" type="text" name="username" placeholder="username">*@
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "input100", @autofocus = "autofocus", placeholder = "Tên tài khoản" })
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        @* <input class="input100" type="password" name="pass" placeholder="Password">*@
+                        @Html.PasswordFor(model => model.Password, new { @class = "input100", placeholder = "Mật khẩu" })
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
+                            Đăng nhập
+                        </button>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="copyright" style="float:right; font-family:sans-serif">
+                        ©
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script> Phát triển bởi <i class="tim-icons icon-heart-2"></i>
+                        <a href="javascript:void(0)" target="_blank" >Đỗ Tuấn Anh.</a> 
+                    </div>
+
+                    
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="~/Assets/Admin/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Assets/Admin/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Assets/Admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Assets/Admin/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Assets/Admin/vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="~/Assets/Admin/js/main.js"></script>
+
+</body>
+</html>

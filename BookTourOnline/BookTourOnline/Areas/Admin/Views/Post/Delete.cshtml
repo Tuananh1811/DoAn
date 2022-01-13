@@ -1,0 +1,73 @@
+﻿@model Model.EF.TinTuc
+
+@{
+    ViewBag.Title = "Xóa";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<h2>Xóa bài viết</h2>
+
+<h3>Bạn có chắc chắn muốn xóa bài viết này?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTaNgan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTaNgan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTaChiTiet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTaChiTiet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayCapNhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayCapNhat)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>

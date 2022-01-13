@@ -1,0 +1,104 @@
+﻿@model List<BookTourOnline.Models.CartItem>
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_LayoutCart.cshtml";
+}
+@section style{
+
+    <script src="~/Assets/Client/Js/cart.js"></script>
+    <link href="~/Assets/Client/Css/cart.css" rel="stylesheet" />
+    <link href="~/Assets/Client/Css/booking.css" rel="stylesheet" />
+}
+
+
+
+<div class="block-cart" style="background: url(/Assets/Client/images/bg-red-pattern.png) 50%;
+        background-size: 50px;
+">
+    <div class="block-cart-content">
+        <h4>Đặt tour</h4>
+        <div class="block-cart-quantity">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="2">Tên tour</th>
+                        <th scope="col">Giá người lớn/khách</th>
+                        <th>Số người lớn</th>
+                        @* <th>Số trẻ em</th>*@
+                        <th scope="col">Ngày khởi hành</th>
+                        <th scope="col">Thời lượng</th>
+                        <th>Tổng Tiền</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td colspan="2">@item.Tour.TenTour</td>
+                        <td><span id="giatour">@item.Tour.Gia.GetValueOrDefault(0).ToString("#,###")</span><span>VNĐ</span> </td>
+                      
+                        <td><input type="number" min="0" max="30" class="txtQuantity" data-id="@item.Tour.MaTour" value="@item.SoLuongNguoiLon" /></td>
+                        @* <td><input type="number" min="0" max="30" class="txtQuantity" data-id="@item.Tour.MaTour" value="@item.SoLuongTreEm" /></td>*@
+                        <td><input type="date" id="date-picker"></td>
+                        <td>@item.Tour.ThoiGian</td>
+                        <td>@((item.Tour.Gia.GetValueOrDefault(0) * item.SoLuongNguoiLon).ToString("N0"))</td>
+                    
+                        <td><a href="" data-id="@item.Tour.MaTour" class="btn-delete">Xoá</a></td>
+                    </tr>
+                    }
+                    @* + item.Tour.Gia.GetValueOrDefault(0) * item.SoLuongTreEm*75/100 *@
+
+
+                </tbody>
+            </table>
+           
+
+        </div>
+        @* test *@
+
+        <div class="customer-infor" >
+            <h5>Thông tin khách hàng</h5>
+            <div class="row no-margin no-padding container-fluid " style="justify-content:center;align-content:center">
+                @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+                {
+                    <div class="col-lg-6 block-input-group ">
+                        <p>Tên <span class="required">*</span></p>
+                        <input type="text" name="TenDangNhap" value="@ViewBag.name" class="block-input-group--input" placeholder="Viết tên của bạn" style="background-color:#fff;border:none;outline:none;">
+                    </div>
+                    <div class="col-lg-6 block-input-group">
+                        <p>Email <span class="required">*</span></p>
+                        <input type="email" name="Email" value="@ViewBag.email" class="block-input-group--input" placeholder="Viết địa chỉ email của bạn">
+                    </div>
+                    <div class="col-lg-6 block-input-group">
+                        <p>Số điện thoại <span class="required">*</span></p>
+                        <input type="text" name="SoDienThoai" value="@ViewBag.phoneNumbers"  class="block-input-group--input" placeholder="Viết số điện thoại của bạn">
+                    </div>
+                    <div class="col-lg-6 block-input-group">
+                        <p>Địa chỉ <span class="required">*</span></p>
+                        <input type="text" name="DiaChi" value="@ViewBag.adress"  class="block-input-group--input " placeholder="Viết địa chỉ của bạn">
+                    </div>
+                    <button type="submit" class="btn col-lg-6 " style="background:#fff; font-weight:bold;color:#a5190e">Đặt tour</button>
+                    @*<div class="col-lg-12 block-input-group">
+                <p>Ghi chú:</p>
+                <textarea name="customer_des" class="block-input-group--input" id="" cols="30" rows="5" placeholder="Viết ghi chú của bạn"></textarea>
+            </div>*@
+                }
+            </div>
+        </div>
+        @*  *@
+       
+      
+        <br>
+        <div class=" row block-btn-direc">
+            <div class="col-lg-2 col-md-3 no-margin no-padding col-sm-3 col-4">
+                <a href=""><button class="block-btn-order "><i class="fas fa-long-arrow-alt-left"></i> Trở lại</button></a>
+            </div>
+           
+
+        </div>
+
+    </div>
+
+
+</div>

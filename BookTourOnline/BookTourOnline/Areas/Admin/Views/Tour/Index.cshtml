@@ -1,0 +1,134 @@
+﻿@model PagedList.IPagedList<Model.EF.Tour>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Quản lý tour";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<h2>Quản lý tour du lịch</h2>
+
+<div class="row">
+    <div class="col-lg-10">
+        @using (Html.BeginForm("Index", "Tour", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="col-lg-12 row">
+                    <div class="col-md-6">
+                        <input type="text" value="@ViewBag.searchString" name="searchString" style="border:1px solid #fff; padding-left:5px;" placeholder="Tìm kiếm" />
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" style="background-color: #E04ECA; color:#fff; font-weight:bold;">Tìm kiếm</button>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+   
+    <div class="col-md-2" style="float:right">
+        <p style="padding:10px 5px; background:#34495e;max-width:300px;text-align:center;color:#fff">
+            @Html.ActionLink("Tạo mới tour", "Create")
+        </p>
+    </div>
+</div>
+   
+    <br />
+    <table class="table table-bordered text-center">
+        <tr>
+            <th style="text-transform:uppercase; color:#fff">
+                Tên danh mục
+            </th>
+            <th style="text-transform:uppercase; color:#fff">
+                Tên tour
+            </th>
+            <th>Ảnh</th>
+            <th style="text-transform:uppercase; color:#fff">
+                Địa điểm
+            </th>
+           
+            <th style="text-transform:uppercase; color:#fff">
+                Thời gian
+            </th>
+            <th style="text-transform:uppercase; color:#fff">
+                Phương tiện
+            </th>
+          
+            <th style="text-transform:uppercase; color:#fff">
+                Giá tour
+            </th>
+            <th style="text-transform:uppercase; color:#fff">
+                Hành động
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DanhMuc.TenDM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTour)
+        </td>
+        <td>
+            @{
+                string ImagePath = "~/wwwroot/images/" + item.HinhAnh;
+
+            }
+            <img src="@Url.Content(ImagePath)" width="150" />
+            <br />
+            @*@Html.DisplayFor(modelItem => item.HinhAnh)*@
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaDiem)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.ThoiGian)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhuongTien)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.KhoiHanh)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.GioiThieu)
+        </td>*@
+        <!--<td>-->
+        @*@Html.DisplayFor(modelItem => item.LichTrinhTour)*@
+        <!--@Html.Raw(item.LichTrinhTour)
+    </td>-->
+        <!--<td>-->
+        @*@Html.DisplayFor(modelItem => item.TourBaoGom)*@
+        <!--@Html.Raw(item.TourBaoGom)
+    </td>
+    <td>-->
+        @*@Html.DisplayFor(modelItem => item.TourKhongBaoGom)*@
+        <!--@Html.Raw(item.TourKhongBaoGom)
+    </td>
+    <td>-->
+        @*@Html.DisplayFor(modelItem => item.DieuKhoanHuyTour)*@
+        <!--@Html.Raw(item.DieuKhoanHuyTour)
+    </td>-->
+        @*<td>
+            @Html.DisplayFor(modelItem => item.NgayTao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayCapNhat)
+        </td>*@
+    <td>
+        @item.Gia.GetValueOrDefault(0).ToString("N0")
+
+    </td>
+
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id = item.MaTour }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.MaTour }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.MaTour })
+        </td>
+    </tr>
+        }
+
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.searchString }))

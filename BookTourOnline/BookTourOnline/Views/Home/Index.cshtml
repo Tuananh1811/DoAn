@@ -1,0 +1,239 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var PostForHomePage = (List<Model.EF.TinTuc>)ViewBag.PostForHomePage;
+    var TakeCountTourHomePage = (List<Model.EF.Tour>)ViewBag.TakeCountTourHomePage;
+    var TourLatest = (List<Model.EF.Tour>)ViewBag.TourLatest;
+}
+@section jsFooter{
+
+
+    <script src="~/Assets/Client/Js/contact.js"></script>
+}
+    @section Slide{
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/Assets/Client/images/Slider/slide5.jpeg" class="d-block w-100" alt="...">
+                    <h1 class="title text-center en">
+                        Sustainable cruising with Bhaya
+                    </h1>
+                </div>
+                <div class="carousel-item ">
+                    <img src="~/Assets/Client/images/Slider/slide6.jpeg" class="d-block w-100" alt="...">
+                    <h1 class="title text-center en">
+                        Vietnam for solo travellers
+                    </h1>
+                </div>
+                <div class="carousel-item ">
+                    <img src="~/Assets/Client/images/Slider/slide7.jpeg" class="d-block w-100" alt="...">
+                    <h1 class="title text-center en">
+
+                        Explore and embrace: Vietnam’s green tours
+                    </h1>
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Assets/Client/images/Slider/slide8.jpeg" class="d-block w-100" alt="...">
+                    <h1 class="title text-center en">
+                        An introduction to sustainable travel
+                    </h1>
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Assets/Client/images/Slider/slide4.jpg" class="d-block w-100" alt="...">
+                    <h1 class="title text-center en">
+                        Why Fansipan is a must-do in Sapa
+
+                    </h1>
+                </div>
+
+
+
+
+            </div>
+            @* Slide *@
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    }
+    @section video{
+        <div class="video-contents">
+
+            <iframe src="https://player.vimeo.com/video/426178435?autoplay=0&loop=1" frameborder="0"></iframe>
+        </div>
+    }
+
+    @section contact{
+        <div class="container-fluid no-padding no-margin contact-register">
+            <div class="block-contact-register">
+                <h6><img src="~/Assets/Client/images/logo-bw.png" alt=""></h6>
+                <h5>Liên hệ ngay nhận ưu đãi hay !</h5>
+                <form action="">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping"><i class="fas fa-map-marker-alt"></i></span>
+                        <input type="text" class="form-control" id="txtDiaDiem" placeholder="Địa điểm" aria-label="Address">
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping"><i class="fas fa-phone"></i></span>
+                        <input type="text" class="form-control" id="txtMobile" placeholder="Số điện thoại" aria-label="Phone">
+                    </div>
+
+                </form>
+                <button id="btnSend" type="button" class="btn btn-link">Gửi yêu cầu</button>
+            </div>
+        </div>
+    }
+    <div class="inspired">
+        <h2 class="section-heading text-uppercase gothambold">
+            Việt nam travel
+        </h2>
+        <p class="section-desc">
+            Khám phá những điểm nổi bật của du lịch Việt Nam và tìm ý tưởng cho kỳ nghỉ của bạn với những địa điểm này.
+        </p>
+        <div class="inspired-nav">
+            <ul class="clearfix inspired-nav hidden-xs hidden-sm">
+                <li>
+                    <a href="#inspire-all" class="allInspires active" data-container="#inspire-all" data-url="/api/vnat/home/interest" data-lang="en" data-is-loaded="true">
+                        All
+                    </a>
+                </li>
+                @*<li>
+                        <a href="./tour-detail.html">Hà Giang</a>
+                    </li>
+                    <li>
+                        <a href="./tour-detail.html">Đà Nẵng</a>
+                    </li>
+                    <li>
+                        <a href="./tour-detail.html">Đà Lạt</a>
+                    </li>
+                    <li>
+                        <a href="./tour-detail.html">Hồ Chí Minh</a>
+                    </li>
+                    <li>
+                        <a href="./tour-detail.html">Mũi Né</a>
+                    </li>*@
+                @foreach (var item in TakeCountTourHomePage)
+                {
+                    var url = "/chi-tiet/" + @item.TenTour + "-" + item.MaTour;
+                    <li>
+                        <a href="@url">@item.DiaDiem</a>
+                    </li>
+                }
+            </ul>
+            <br />
+            <div>
+                <h2 class="section-heading text-uppercase gothambold">
+                    Địa điểm du lịch mới nhất
+                </h2>
+                <p class="section-desc">
+                    Khám phá những địa điểm mới của du lịch Việt Nam và tìm ý tưởng cho kỳ nghỉ của bạn với những địa điểm này.
+                </p>
+
+                <div class="inspired-nav">
+
+                    <section class="inspires-top">
+                        <div id="inspire-all" class="inspire active">
+                            <div class="row">
+                                @foreach (var item in TourLatest)
+                                {
+                                    var url = "/chi-tiet/" + @item.TenTour + "-" + item.MaTour;
+                                    <div class="col-xs-12 col-md-4 " style="margin-bottom:20px;">
+                                        <article class="big" style="height:300px">
+                                            <a href="@url">
+                                                <img src="~/wwwroot/images/@item.HinhAnh">
+                                                <div class="inspire--desc">
+                                                    <h6>@item.DiaDiem</h6>
+                                                    <p class="montserrat-bold">@item.TenTour</p>
+                                                </div>
+                                            </a>
+                                        </article>
+                                    </div>
+                                }
+                            </div>
+                            <br>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <br />
+            <div>
+                <h2 class="section-heading text-uppercase gothambold">
+                    Địa điểm du lịch lý tưởng
+                </h2>
+                <p class="section-desc">
+                    Khám phá những điểm nổi bật của du lịch Việt Nam và tìm ý tưởng cho kỳ nghỉ của bạn với những địa điểm này.
+                </p>
+
+                <div class="inspired-nav">
+
+                    <section class="inspires-top">
+                        <div id="inspire-all" class="inspire active">
+                            <div class="row">
+                                @foreach (var item in TakeCountTourHomePage)
+                                {
+                                    var url = "/chi-tiet/" + @item.TenTour + "-" + item.MaTour;
+                                    <div class="col-xs-12 col-md-4 " style="margin-bottom:20px;">
+                                        <article class="big" style="height:300px">
+                                            <a href="@url">
+                                                <img src="~/wwwroot/images/@item.HinhAnh">
+                                                <div class="inspire--desc">
+                                                    <h6>@item.DiaDiem</h6>
+                                                    <p class="montserrat-bold">@item.TenTour</p>
+                                                </div>
+                                            </a>
+                                        </article>
+                                    </div>
+                                }
+                            </div>
+                            <br>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <section class="inspires-top">
+                <div id="inspire-all" class="inspire active">
+                    <h2 class="section-heading text-uppercase gothambold">
+                        Tin tức mới nhất
+                    </h2>
+                    <p class="section-desc">
+                        Khám phá những tin tức của du lịch Việt Nam và tìm ý tưởng cho kỳ nghỉ của bạn.
+                    </p>
+                    <div class="row">
+
+                        @foreach (var item in PostForHomePage)
+                        {
+                            var url = "/tin-tuc/" + item.TieuDe + "-" + item.MaTinTuc;
+                            <div class="col-xs-12 col-md-4 " style="margin-bottom:20px;">
+                                <article class="big" style="height:300px">
+                                    <a href="@url">
+                                        <img src="~/wwwroot/images/@item.HinhAnhMinhHoa">
+                                        <div class="inspire--desc">
+                                            <h6>@item.TieuDe</h6>
+                                            <p class="montserrat-bold">@item.MoTaNgan </p>
+                                        </div>
+                                    </a>
+                                </article>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+        </div>
+        <br>
+
+
+    </div>
+

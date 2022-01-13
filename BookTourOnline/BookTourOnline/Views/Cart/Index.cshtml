@@ -1,0 +1,98 @@
+﻿
+@model List<BookTourOnline.Models.CartItem>
+@{
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCart.cshtml";
+
+}
+@section style{
+    <script src="~/Assets/Client/Js/cart.js"></script>
+
+    <link href="~/Assets/Client/Css/cart.css" rel="stylesheet" />
+    <link href="~/Assets/Client/Css/booking.css" rel="stylesheet" />
+}
+
+
+
+<div class="block-regulations">
+
+    <h6><i class="fas fa-child"></i> TRẺ EM (cần đọc kỹ để nẵm rõ về tiêu chuẩn của trẻ em):</h6>
+    <p>- Trẻ em từ 1-4 tuổi miễn phí (bố mẹ tự lo mọi chi phí cho trẻ, không chiếm chỗ trên xe). 02 người lớn chỉ được kèm theo 01 trẻ miễn phí, từ trẻ thứ 2 tính 75% giá tour (tiêu chuẩn như trẻ em tính phí).</p>
+    <p>– Trẻ em từ 5-11 tuổi tính 75% giá tour (ăn suất riêng, chỗ ngồi trên xe riêng nhưng phải ngủ chung giường với bố mẹ). 02 trẻ em tính phí cũng không có tiêu chuẩn giường ngủ riêng.</p>
+    <p>- Trẻ em từ 12 tuổi trở lên tính như người lớn.</p>
+    Lưu ý: Bảng giá trên có thể thay đổi tùy thuộc vào số lượng khách và từng thời điểm cụ thể. Hãy liên hệ với chúng tôi để có mức giá hợp lý nhất.
+</div>
+
+<div class="block-cart" style="background: url(/Assets/Client/images/bg-red-pattern.png) 50%;
+        background-size: 50px;
+">
+    <div class="block-cart-content">
+        <h4>Đặt tour</h4>
+        <div class="block-cart-quantity">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="2">Tên tour</th>
+                        <th scope="col">Giá người lớn/khách</th>
+                        <th>Số người lớn</th>
+                        @*  <th>Số trẻ em</th>*@
+                        <th scope="col">Ngày khởi hành</th>
+                        <th scope="col">Thời lượng</th>
+                        <th>Tổng Tiền</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td colspan="2">@item.Tour.TenTour</td>
+                            <td><span id="giatour">@item.Tour.Gia.GetValueOrDefault(0).ToString("#,###")</span><span>VNĐ</span> </td>
+
+                            <td><input type="number" min="0" max="30" class="txtQuantity" data-id="@item.Tour.MaTour" value="@item.SoLuongNguoiLon" style="border:none" /></td>
+                            @* nghich *@
+                            @*  <td><input type="number" min="0" max="30" class="txtQuantity" data-id="@item.Tour.MaTour" value="@item.SoLuongTreEm" /></td>*@
+                            <td><input type="date"  id="date-picker" class="khoihanh"></td>
+                            <td>@item.Tour.ThoiGian</td>
+                            <td>@((item.Tour.Gia.GetValueOrDefault(0) * item.SoLuongNguoiLon + item.Tour.Gia.GetValueOrDefault(0) * item.SoLuongTreEm * 75 / 100).ToString("N0"))</td>
+
+                            <td><a href="" data-id="@item.Tour.MaTour" class="btn-delete">Xoá</a></td>
+
+                        </tr>
+                    }
+                    @* + item.Tour.Gia.GetValueOrDefault(0) * item.SoLuongTreEm*75/100 *@
+
+
+                </tbody>
+            </table>
+
+            <button id="btnUpdate" class="btn col-3 " style="float:right; background:#fff;width:165px;">Cập nhật tổng tiền</button>
+        </div>
+       
+        
+      
+        <br>
+        <br />
+        <br />
+        <div class=" row block-btn-direc">
+            <div class="col-lg-2 col-md-3 no-margin no-padding col-sm-3 col-4">
+                <a href=""><button class="block-btn-order " style="border-radius:5px"><i class="fas fa-long-arrow-alt-left"></i> Trở lại</button></a>
+            </div>
+            <div class="col-lg-8 col-md-6 no-margin no-padding col-sm-6 col-3"></div>
+            <div class="col-lg-2 col-md-3 no-margin no-padding col-sm-3 col-5">
+
+                <button class="block-btn-order " id="btnPayment" style="border-radius:5px">Thanh Toán <i class="fas fa-long-arrow-alt-right"></i></button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+<script>
+
+
+</script>

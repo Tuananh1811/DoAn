@@ -1,0 +1,108 @@
+﻿@model Model.EF.TinTuc
+@using System.Web.Optimization
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+    var ImagePath = "~/wwwroot/images/" + Model.HinhAnhMinhHoa;
+}
+
+<h2>Sửa tin tức</h2>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Areas/Asset/plugins/ckeditor/ckeditor.js"></script>
+    <script>
+        var editor = CKEDITOR.replace('txtContent', {
+            customConfig: '~/Areas/Assets/plugin/ckeditor/config.js'
+        })
+    </script>
+}
+
+@using (Html.BeginForm("Edit", "Post", FormMethod.Post,
+    new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaTinTuc)
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhAnhMinhHoa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <img id="output" class="img-rounded" alt="Ảnh" width="200" height="200" style="object-fit:cover" src="@Url.Content(@ImagePath)" />
+                <p><lable for="ufile" style="cursor:pointer;">Chọn file ảnh</lable></p>
+                <input name="ImageFile" id="ufile" type="file" onchange="loadFile(event)" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TieuDe, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MoTaNgan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MoTaNgan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MoTaNgan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MoTaChiTiet, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.MoTaChiTiet, new { htmlAttributes = new { @class = "form-control" },id= "txtContent" })
+                @Html.ValidationMessageFor(model => model.MoTaChiTiet, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayTao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayTao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NgayTao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayCapNhat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayCapNhat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NgayCapNhat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <lable class="control-label col-md-2">Người viết</lable>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại", "Index")
+</div>
+
+@if (ViewBag.Error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

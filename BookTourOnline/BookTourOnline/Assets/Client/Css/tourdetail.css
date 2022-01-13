@@ -1,0 +1,268 @@
+.block-summary-statistics {
+    /* max-width: 70%; */
+    width: 50% !important;
+    margin: 20px !important;
+    background: url(/images/bg-red-pattern.png) 50% center / 50px;
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+    .block-summary-statistics p {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+    }
+
+.block-meta-tour-detail-item {
+    align-items: center !important;
+}
+
+.block-meta-tour-detail--icon {
+    text-align: right !important;
+}
+
+    .block-meta-tour-detail--icon i {
+        align-items: center !important;
+        font-size: 20px !important;
+    }
+
+.block-img-detail {
+    width: 100%;
+    position: relative;
+}
+
+    .block-img-detail img {
+        width: 100%;
+        object-fit: cover;
+        height: 600px;
+    }
+
+.title-detail {
+    left: 0;
+    right: 0;
+    top: calc(50% - 110px);
+    font-family: 'Cherish', cursive;
+    /* font-family: 'Ephesis', cursive; */
+    /* font-family: 'Sacramento', cursive; */
+    width: 95%;
+    max-width: 680px;
+    font-size: 100px;
+    text-shadow: 2px 2px 2px rgb(0 0 0 / 75%);
+    position: absolute;
+    display: block;
+    color: #fff !important;
+    margin: auto;
+    letter-spacing: 15px;
+    font-weight: 500;
+}
+
+.container-content-detail {
+    margin-top: 40px !important;
+}
+
+
+/* img */
+
+.box-big-img {
+    width: 100%;
+    height:420px;
+}
+
+    .box-big-img a img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.box-images-list {
+    margin-top: 10px !important;
+}
+
+    .box-images-list ul li a img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: .7;
+    }
+
+        .box-images-list ul li a img:hover {
+            opacity: 1;
+        }
+
+.container-content-detail-right {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+    .container-content-detail-right h4 {
+        margin-bottom: 20px;
+    }
+
+.description .general-intro {
+    text-align: justify;
+}
+
+.description button {
+    max-width: 130px;
+    width: 120px;
+    background: url(/Assets/Client/images/bg-red-pattern.png) 50% !important;
+    background-size: 50px;
+    color: #fff !important;
+    display: inline-block;
+    margin: 0;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.btn-book-tour {
+    padding: 4px 0px !important;
+}
+
+.block-schedule {
+    padding: 100px 100px !important;
+}
+
+    .block-schedule h6 {
+        background: url(/Assets/Client/images/bg-red-pattern.png) 50% !important;
+        background-size: 50px;
+        color: #fff;
+        display: inline-block;
+        margin: 0;
+        padding: 10px 20px;
+        text-align: left !important;
+        text-transform: uppercase;
+        font-size: 15px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc !important;
+        letter-spacing: 1px;
+    }
+
+
+.block-content-schedule-detail {
+    border-left: 2px solid var(--yellow-color);
+    padding: 0px 20px !important;
+    text-align: justify;
+}
+
+.block-schedule-content .block-schedule-content-title {
+    color: var(--yellow-color);
+    font-weight: 500;
+}
+
+.block-schedule-content #myTab {
+    margin-bottom: 30px !important;
+}
+
+    .block-schedule-content #myTab button {
+        color: var(--yellow-color) !important;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+
+/* responsive */
+
+@media only screen and (min-width: 300px) and (max-width: 575px) {
+    .title-detail {
+        width: 90%;
+        max-width: 300px;
+        font-size: 40px;
+        text-shadow: 2px 2px 2px rgb(0 0 0 / 75%);
+        position: absolute;
+        color: #fff !important;
+        top: calc(50% - 40px);
+    }
+
+    .block-schedule {
+        padding: 10px 30px !important;
+    }
+
+    .block-schedule-content .nav-tabs li {
+        font-size: 12px !important;
+    }
+
+    .block-user-right-mobile ul {
+        justify-content: right;
+    }
+
+        .block-user-right-mobile ul li a {
+            color: var(--text-color);
+        }
+
+    .block-summary-statistics {
+        /* max-width: 70%; */
+        width: 100% !important;
+        margin: 20px !important;
+        background: url(/images/bg-red-pattern.png) 50% center / 50px;
+        color: rgb(255, 255, 255);
+        display: inline-block;
+        /* justify-content: center;
+        align-items: center; */
+    }
+
+    .block-footer-detail-2 {
+        padding: 10px 20px !important;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .title-detail {
+        width: 90%;
+        max-width: 300px;
+        font-size: 40px;
+        text-shadow: 2px 2px 2px rgb(0 0 0 / 75%);
+        position: absolute;
+        color: #fff !important;
+        top: calc(50% - 40px);
+    }
+
+    .block-user-right-mobile ul {
+        justify-content: right;
+    }
+
+        .block-user-right-mobile ul li a {
+            color: var(--text-color);
+        }
+
+    .block-schedule {
+        padding: 20px 20px !important;
+    }
+
+    .block-summary-statistics {
+        /* max-width: 70%; */
+        width: 100% !important;
+        margin: 20px !important;
+        background: url(/images/bg-red-pattern.png) 50% center / 50px;
+        color: rgb(255, 255, 255);
+        display: inline-block;
+        /* justify-content: center;
+        align-items: center; */
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .title-detail {
+        width: 90%;
+        max-width: 380px;
+        font-size: 45px;
+        text-shadow: 2px 2px 2px rgb(0 0 0 / 75%);
+        position: absolute;
+        color: #fff !important;
+    }
+
+    .block-user-right-mobile ul {
+        justify-content: right;
+    }
+
+        .block-user-right-mobile ul li a {
+            color: var(--text-color);
+        }
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1400px) {
+}
+
+@media only screen and (min-width: 1401px) {
+}

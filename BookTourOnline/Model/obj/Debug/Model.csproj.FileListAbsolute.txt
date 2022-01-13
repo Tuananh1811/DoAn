@@ -1,0 +1,16 @@
+D:\Product\BookTourOnline\Model\bin\Debug\Model.dll.config
+D:\Product\BookTourOnline\Model\bin\Debug\Model.dll
+D:\Product\BookTourOnline\Model\bin\Debug\Model.pdb
+D:\Product\BookTourOnline\Model\bin\Debug\EntityFramework.dll
+D:\Product\BookTourOnline\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Product\BookTourOnline\Model\bin\Debug\EntityFramework.xml
+D:\Product\BookTourOnline\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Product\BookTourOnline\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\Product\BookTourOnline\Model\obj\Debug\Model.csproj.CopyComplete
+D:\Product\BookTourOnline\Model\obj\Debug\Model.dll
+D:\Product\BookTourOnline\Model\obj\Debug\Model.pdb
+D:\Product\BookTourOnline\Model\bin\Debug\PagedList.dll
+D:\Product\BookTourOnline\Model\bin\Debug\PagedList.Mvc.dll
+D:\Product\BookTourOnline\Model\bin\Debug\PagedList.xml
+D:\Product\BookTourOnline\Model\bin\Debug\PagedList.Mvc.xml
+D:\Product\BookTourOnline\Model\obj\Debug\Model.csprojAssemblyReference.cache

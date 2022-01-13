@@ -1,0 +1,92 @@
+﻿﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Thông tin đơn đặt tour mới từ khách hàng: {{TenDangNhap}}</title>
+    <meta charset="utf-8" />
+    <!-- CSS only -->
+   
+    <style>
+        .block_content {
+            width: 80%;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <!--Thông tin đơn đặt tour : <br/>
+     Ngày đặt: <b>{{NgayDat}}</b><br />
+    Tên khách hàng: <b>{{TenDangNhap}}</b>
+     <br />
+     Tên tour đã đặt: <b>{{TenTour}}</b><br />
+     Điện thoại:<b>{{SoDienThoai}}</b>  <br />
+     Email: <b>{{Email}}</b><br />
+     Địa chỉ:<b>{{DiaChi}}</b> <br />
+     Tour có giá tiền: <b>{{Total}}</b><br />-->
+    <div class="container-fluid">
+        <div class="block_content" style="text-align: center;">
+            <div class="container row" style="align-items: center;">
+
+                <div class="col-lg-9" style="font-size: 50px; font-weight: bold; color:red;">Việt Nam Travel</div>
+            </div>
+            <div style="margin-top: 30px;">
+                <h3>Cám ơn bạn đã đặt tour tại Việt Nam Travel!</h3>
+
+            </div>
+            <br>
+            <div style="text-align: left;">
+                <p>Xin chào {{TenDangNhap}},</p>
+                <p>Vietnam Travel đã nhận được yêu cầu đặt tour của bạn và đang xử lý nhé. Bạn sẽ nhận được thông báo tiếp theo khi đơn tour đã sẵn sàng được đặt.</p>
+                <br>
+                <hr>
+                <p>Thông tin của bạn</p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td style="width: 200px;">Tên: </td>
+                            <td>{{TenDangNhap}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px;">Email: </td>
+                            <td>{{Email}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px;">Số điện thoại: </td>
+                            <td>{{SoDienThoai}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px;">Địa chỉ: </td>
+                            <td>{{DiaChi}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr />
+                <p>Thông tin tour</p>
+                <table class="table table-bordered" style="text-align: center; border:1px solid black; width:100%">
+                    <thead>
+                        <th>Ngày đặt</th>
+                        <th style="margin-left:20px">Tên tour</th>
+                        <th style="margin-left:20px">Số lượng tham gia</th>
+                        <th style="width:100px">Giá</th>
+                        <th style="margin-left:20px">Tổng tiền</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td >{{NgayDat}}</td>
+                            <td style="margin-left:20px">{{TenTour}}</td>
+                            <td style="margin-left:20px">{{SoLuong}}</td>
+                            <td style="width:100px">{{Gia}}</td>
+                            <td style="margin-left:20px">{{Total}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- JavaScript Bundle with Popper -->
+ 
+</body>
+</html>

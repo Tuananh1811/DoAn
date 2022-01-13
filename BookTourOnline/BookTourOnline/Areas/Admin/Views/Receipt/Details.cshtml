@@ -1,0 +1,102 @@
+﻿@model Model.EF.DonHang
+@using System.Web.Optimization
+@{
+    ViewBag.Title = "Chi tiết";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<div style="font-size:16px">
+
+    <dl class="dl-horizontal">
+        @*<dt>
+                @Html.DisplayNameFor(model => model.LoaiKhachHang.Ten)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LoaiKhachHang.Ten)
+            </dd>*@
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.LoaiVe.MaLoaiVe)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LoaiVe.MaLoaiVe)
+            </dd>*@
+        <dt>
+            @Html.DisplayNameFor(model => model.TaiKhoan.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaiKhoan.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaiKhoan.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan.DiaChi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TaiKhoan.SoDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan.SoDienThoai)
+        </dd>
+    </dl>
+    <table class="table table-hover table-striped table-bordered" style="font-size:16px">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tour.TenTour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayKhoiHanh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThoiLuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoLuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TongTien)
+            </th>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Tour.TenTour)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NgayKhoiHanh)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ThoiLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.SoLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.TongTien)
+            </td>
+            
+           
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaDonHang }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>

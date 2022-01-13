@@ -1,0 +1,146 @@
+﻿@model Model.EF.Tour
+@using System.Web.Optimization
+@{
+    ViewBag.Title = "Xóa tour";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+
+
+<h3>Bạn có chắc chắc muốn xóa tour này ?</h3>
+<div>
+    <h4>Thông tin Tour</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DanhMuc.TenDM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanhMuc.TenDM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaDiem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaDiem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuyMo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuyMo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiGian)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiGian)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhuongTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhuongTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhoiHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhoiHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiThieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiThieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LichTrinhTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LichTrinhTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TourBaoGom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TourBaoGom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TourKhongBaoGom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TourKhongBaoGom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DieuKhoanHuyTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DieuKhoanHuyTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayCapNhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayCapNhat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>

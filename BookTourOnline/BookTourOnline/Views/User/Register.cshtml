@@ -1,0 +1,113 @@
+﻿@model BookTourOnline.Models.Register
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_layoutDetail.cshtml";
+}
+@section style
+{
+
+   
+    <link href="~/Assets/Client/Css/listtour.css" rel="stylesheet" />
+
+
+}
+@section jsFooter{
+    <script type="text/javascript">
+        var onloadcallback = function () {
+            grecaptcha.render('divcaptch', {
+                //  'sitekey': '6ld0k3cdaaaaaj5axbz26ieqtwykfbrrol4nk3to',
+                'callback': function (response) {
+                    $('txtcaptcha').val('t');
+                }
+            });
+        };
+
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadcallback&render=explicit">
+    </script>
+}
+
+<div class=" row no-margin no-padding" style="width:90%; margin: 50px auto !important;">
+    <div class="row">
+        <div class="col-md-12 row">
+            <div class="col-md-5 " style="margin:0px auto; padding:40px 40px; background-color:#fff; border-radius:5px;box-shadow:0px 10px 8px -5px #7f8fa6 !important;">
+                @using (Html.BeginForm("Register", "User", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>Đăng ký tài khoản</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @if (ViewBag.Success != null)
+                        {
+                            <div class="alert alert-success">@ViewBag.Success</div>
+                        }
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TenDangNhap, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div id="divcaptch" data-sitekey="6Ld0K3cdAAAAAJ5AXbZ26IEqtwYKFBrROl4NK3tO" style="width:100%; ">
+                        </div>
+                        <span style="display:inline-block; font-size:20px;margin:20px 0;padding:20px; color:red;">
+                            @ViewBag.Message
+                        </span>
+
+                    
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Đăng ký" style="background-color: #a5190e; color:#fff; border:none;padding:8px 10px; border-radius:5px;" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

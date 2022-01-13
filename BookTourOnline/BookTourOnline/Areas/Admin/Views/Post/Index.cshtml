@@ -1,0 +1,65 @@
+﻿@model PagedList.IPagedList<Model.EF.TinTuc>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Quản lý tin tức";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<h2>Danh sách tin tức</h2>
+
+<p style="padding:10px 5px; background:#34495e;max-width:300px;text-align:center;color:#fff">
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<br />
+<table class="table table-bordered text-center">
+    <tr>
+        <th>
+            Tên tài khoản
+        </th>
+       
+        <th>
+            Mô tả ngắn
+        </th>
+       
+        <th>
+            Ngày tạo
+        </th>
+       
+        <th>Hình ảnh</th>
+        <th>Hành động</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.TaiKhoan.HoTen)
+    </td>
+   
+    <td>
+        @Html.DisplayFor(modelItem => item.MoTaNgan)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.NgayTao)
+    </td>
+   
+    <td>
+        @{
+            string ImagePath = "~/wwwroot/images/" + item.HinhAnhMinhHoa;
+
+        }
+        <img src="@Url.Content(ImagePath)" width="150" />
+        <br />
+       
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "Edit", new { id = item.MaTinTuc }) |
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaTinTuc }) |
+        @Html.ActionLink("Xóa", "Delete", new { id = item.MaTinTuc })
+    </td>
+</tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.searchString }))

@@ -1,0 +1,205 @@
+﻿@model  List<Model.EF.Tour>
+
+@{
+    var category = (Model.EF.DanhMuc)ViewBag.DanhMuc;
+    ViewBag.Title = category.TenDM;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section style{
+    <link href="~/Assets/Client/Css/listtour.css" rel="stylesheet" />
+    <link href="~/Assets/Client/Css/news.css" rel="stylesheet" />
+    <link href="~/Assets/Client/Css/slick.css" rel="stylesheet" />
+}
+@Html.Partial("_Slide");
+<div class="inspired-list-tour">
+    <h6 style="text-align:left;">Trang chủ > @category.TenDM</h6>
+
+    <h2 class="section-heading text-uppercase gothambold">
+        @* Địa điểm du lịch lý tưởng @Model.TenDM*@
+    </h2>
+    <p class="section-desc">
+        Khám phá những điểm nổi bật của du lịch Việt Nam và tìm ý tưởng cho kỳ nghỉ của bạn với những địa điểm này.
+    </p>
+    <div class="row container-fluid no-padding">
+        <div class="filter col-lg-3 col-md-4 no-margin no-padding">
+            <div class="search container-fluid no-padding no-margin">
+                <h6>Tìm kiếm</h6>
+                <input type="text">
+                <button>Tìm kiếm</button>
+            </div>
+            <div class="search container-fluid no-padding no-margin">
+                <h6>Tìm kiếm theo khoảng ngày</h6>
+                <select class="form-select" name="" id="">
+                    <option selected>Chọn khoảng ngày</option>
+                    <option value="">từ 1-2 ngày</option>
+                    <option value="">từ 1-5 ngày</option>
+                    <option value="">5 ngày trở lên</option>
+
+                </select>
+            </div>
+            <div class="search container-fluid no-padding no-margin">
+                <h6>Khoảng giá</h6>
+                <select class="form-select" name="" id="">
+                    <option selected>Chọn khoảng giá</option>
+                    <option value="">từ 0đ đến 5.000.000đ</option>
+                    <option value="">từ 5.000.000 đến 10.000.000 đ</option>
+                    <option value="">từ 10.000.000 đến 20.000.000</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="inspired-nav col-lg-9 col-md-8">
+
+            <section class="inspires-top">
+                <div id="inspire-all" class="inspire active">
+                    <div class="row">
+                       
+                            @foreach (var item in Model)
+                            {
+                                var url = "/chi-tiet/" + @item.TenTour + "-" + item.MaTour;
+                                <div class="col-xs-12 col-lg-4 col-md-6 col-sm-6 no-padding block-tour-category">
+                                    <article class="big">
+                                        <a href="@url">
+
+                                            <img src="~/wwwroot/images/@item.HinhAnh">
+                                            <div class="inspire--desc">
+                                                <h6>@item.DiaDiem</h6>
+                                                <p class="montserrat-bold">
+                                                    @item.TenTour
+                                                    <br>
+                                                    <span>@item.ThoiGian</span> - <span class="price-tour">@(item.Gia.HasValue?item.Gia.Value.ToString("N0"):"Liên hệ") VND</span>
+                                                </p>
+
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                            }
+                    </div>
+                    <br>
+                    @if (ViewBag.TotalPage >= 1)
+                    {
+                        var pageDisplay = (int)ViewBag.MaxPage;
+                        int totalPage = (int)ViewBag.TotalPage;
+                        int currentPage = ((int)ViewBag.Page);
+
+                        // Create numeric links
+                        var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2);
+                        var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
+
+                        var link = "/Loai-tour-du-lich/" + category.TenDM + "-" + category.MaDM;
+                        <nav style="width:60%; float:right; text-align:right;">
+                            <ul class="pagination">
+                                @if (currentPage > ViewBag.First)
+                                {
+                                    <li><a href="@link?page=@ViewBag.First" title="Trang đầu" class="first" style="min-width: 50px; font-size:14px;"><i class="fa fa-angle-double-left"></i></a></li>
+                                    <li>
+                                        <a href="@link?page=@ViewBag.Prev" title="Trang trước" class="prev" style="min-width: 50px;font-size:14px;"><i class="fa fa-angle-left"></i></a>
+                                    </li>
+
+                                }
+                                @for (int i = startPageIndex; i <= endPageIndex; i++)
+                                {
+                                    if (currentPage == i)
+                                    {
+
+                                        <li> <a href="@link?page=@i" class="active" title="Trang @i" style="min-width: 50px; font-size:14px;">@i</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="@link?page=@i" title="Trang @i" class="pos" style="min-width: 50px;font-size: 14px;">@i</a>
+                                        </li>
+                                    }
+                                }
+                                @if (currentPage < totalPage)
+                                {
+                                    <li>
+                                        <a href="@link?page=@ViewBag.Next" class="next" title="Trang sau" style="min-width: 50px;font-size: 14px;"><i class="fa fa-angle-right"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="@link?page=@ViewBag.Last" class="last" title="Trang cuối" style="min-width: 50px;font-size: 14px;"><i class="fa fa-angle-double-right"></i></a>
+                                    </li>
+                                }
+
+                            </ul>
+                        </nav>
+
+                    }
+                    else
+                    {
+                        <span>Không có bản ghi nào</span>
+                    }
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+</div>
+<section id="travel-toolkit " class="bg-light" style="width:100%">
+    <div class=" bg-light block-travel-toolkit">
+        <h2 class="section-heading text-uppercase gothambold">CÁC LỜI KHUYÊN DU LỊCH</h2>
+        <p class="section-desc">Chuẩn bị cho chuyến đi của bạn với những bài viết thiết thực này</p>
+        <div class="row block-toolkit-item">
+            <div class="col-lg-2 text-center toolkit-item">
+                <div class="thumbnail">
+                    <a href="#">
+                        <img src="~/Assets/Client/images/tips/Visas_1.jpg" />
+
+                        <div class="caption text-uppercase">
+                            <p>Visas</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 text-center toolkit-item">
+                <div class="thumbnail">
+                    <a href="./new-detail.html">
+                        <img src="~/Assets/Client/images/tips/Transport_1.jpg" />
+
+                        <div class="caption text-uppercase">
+                            <p>TRANSPORT</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 text-center toolkit-item">
+                <div class="thumbnail">
+                    <a href="#">
+                        <img src="~/Assets/Client/images/tips/Weather white_1.jpg" />
+
+                        <div class="caption text-uppercase">
+                            <p>WEATHER</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 text-center toolkit-item">
+                <div class="thumbnail">
+                    <a href="#">
+                        <img src="~/Assets/Client/images/tips/Health and Safety_0.jpg" />
+
+                        <div class="caption text-uppercase">
+                            <p>SAFETY</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 text-center toolkit-item">
+                <div class="thumbnail">
+                    <a href="#">
+                        <img src="~/Assets/Client/images/tips/History white_0.jpg" />
+
+                        <div class="caption text-uppercase">
+                            <p>HISTORY</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

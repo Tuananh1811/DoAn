@@ -1,0 +1,81 @@
+﻿@model Model.EF.DonHang
+@using System.Web.Optimization
+@{
+    ViewBag.Title = "Xóa đơn";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<h2>Xóa đơn</h2>
+
+<h3>Bạn có chắc chắn muốn xóa đơn hàng này</h3>
+<div>
+   
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiKhachHang.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiKhachHang.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiVe.MaLoaiVe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiVe.MaLoaiVe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaiKhoan.MatKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan.MatKhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tour.TenTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tour.TenTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayKhoiHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayKhoiHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

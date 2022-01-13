@@ -1,0 +1,6 @@
+D:\Product\BookTourOnline\Common\bin\Debug\Common.dll
+D:\Product\BookTourOnline\Common\bin\Debug\Common.pdb
+D:\Product\BookTourOnline\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+D:\Product\BookTourOnline\Common\obj\Debug\Common.dll
+D:\Product\BookTourOnline\Common\obj\Debug\Common.pdb
+D:\Product\BookTourOnline\Common\obj\Debug\Common.csprojAssemblyReference.cache

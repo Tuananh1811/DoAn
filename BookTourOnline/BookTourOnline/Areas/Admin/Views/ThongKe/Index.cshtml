@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+
+}
+<h2 style="text-align:center; font-weight:bold">Thống kê</h2>
+<hr />
+<div class="container-fluid" >
+    <div class="row" style="justify-content:center">
+        <div class="col-lg-3 text-center" style="margin-bottom: 40px;background-color: #34495e; padding:20px 0px; font-size:25px;margin-right:10px">
+            <p style="letter-spacing:1px"><a style="color:#fff" href="@Url.Action("Index","Tour")">Tổng số tour</a> <i class="fas fa-bus-alt"></i></p>
+            <br />
+            <p>@ViewBag.Count</p>
+        </div>
+        <div class="col-lg-3 text-center" style="margin-bottom: 40px;background-color: #34495e; padding:20px 0px; font-size:25px;margin-right:10px">
+            <p style="letter-spacing:1px">Feedback <i class="fas fa-comment-dots"></i></p>
+            <br />
+            <p>@ViewBag.feedback</p>
+        </div>
+        <div class="col-lg-3 text-center" style="margin-bottom: 40px;background-color: #34495e; padding:20px 0px; font-size:25px;margin-right:10px">
+            <p style="letter-spacing:1px"><a style="color:#fff" href="@Url.Action("ShowAccount","ThongKe")">Tài khoản khách hàng</a> <i class="fas fa-user"></i></p>
+            <br />
+            <p>@ViewBag.taikhoan</p>
+        </div>
+        <div class="col-lg-3 text-center" style="margin-bottom: 40px;background-color: #34495e; padding:20px 0px; font-size:25px;margin-right:10px">
+            <p style="letter-spacing:1px">Hóa đơn trong tháng <i class="fas fa-file-invoice"></i></p>
+            <br />
+            <p>  @ViewBag.listHoaDon</p>
+        </div>
+        <div class="col-lg-3 text-center" style="margin-bottom: 40px;background-color: #34495e; padding:20px 0px; font-size:25px; margin-right:10px">
+            <p style="letter-spacing:1px"><a style="color:#fff" href="@Url.Action("ShowOrder","ThongKe")">Doanh thu trong tháng </a> <i class="fas fa-file-invoice-dollar"></i></p>
+            <br />
+            <p>  @ViewBag.Total VND</p>
+        </div>
+
+        <div class="col-lg-3 text-center" style="margin-bottom: 40px;background-color: #34495e; padding:20px 0px; font-size:25px; margin-right:10px">
+            <p style="letter-spacing:1px"><a style="color:#fff" href="@Url.Action("ShowOrderToTalYear","ThongKe")">Doanh thu trong năm</a> <i class="fas fa-file-invoice-dollar"></i></p>
+            <br />
+            <p>  @ViewBag.TotalYear VND</p>
+        </div>
+        <div class="col-lg-3 text-center" style="margin-bottom: 40px;background-color: #34495e; padding:20px 0px; font-size:25px;margin-right:10px;">
+            <p style="letter-spacing:1px"><a style="color:#fff" href="@Url.Action("Index","Post")">Tin tức</a> <i class="fas fa-newspaper"></i></p>
+            <br />
+            <p>@ViewBag.tintuc</p>
+        </div>
+    </div>
+   
+
+</div>
+

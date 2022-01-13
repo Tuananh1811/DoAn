@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Model.EF.DonHang>
+@using System.Web.Optimization
+@{
+    ViewBag.Title = "Quản lý đơn";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<h2>Danh sách đơn hàng</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table class="table table-bordered text-center" style="font-size:15px">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.LoaiKhachHang.Ten)
+        </th>
+        <th>
+            Mã loại vé
+        </th>*@
+        <th>
+           Họ tên
+        </th>
+        <th>
+            Tên tour
+        </th>
+        <th>
+            Ngày khởi hành
+        </th>
+        <th>
+            Thời gian
+        </th>
+        <th>
+            Số lượng người
+        </th>
+        <th>Hành động</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.TaiKhoan.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tour.TenTour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayKhoiHanh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MaDonHang }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.MaDonHang }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaDonHang })
+            </td>
+        </tr>
+    }
+
+</table>

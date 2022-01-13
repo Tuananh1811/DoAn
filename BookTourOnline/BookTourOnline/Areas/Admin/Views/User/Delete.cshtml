@@ -1,0 +1,62 @@
+﻿@model Model.EF.TaiKhoan
+@{
+    ViewBag.Title = "Xóa";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<div style="margin-top:100px">
+
+    <h3 style="text-align:center">Bạn có chắc chắn muốn xóa tài khoản này?</h3>
+    <div style="width:26%; margin:20px auto 0px auto">
+        <div class="dl-horizontal">
+            <div style="display:block">
+                <b style="margin-right:10px; width:90px;">Tên tài khoản:</b>
+                <span>@Html.DisplayFor(model => model.TenDangNhap)</span>
+            </div>
+            <div>
+                <b style="margin-right:10px; width:90px;">@Html.DisplayNameFor(model => model.HoTen):</b>
+                <span> @Html.DisplayFor(model => model.HoTen)</span>
+            </div>
+            <div>
+                <b style="margin-right:10px ; width:90px;">@Html.DisplayNameFor(model => model.Email):</b>
+                <span>@Html.DisplayFor(model => model.Email)</span>
+            </div>
+            <div>
+                <b style="margin-right:10px; width:90px"> Quyền:</b>
+                @if (Model.Quyen == -1)
+                {
+                    <span>Khách hàng</span>
+                }
+                @if (Model.Quyen == 0)
+                {
+                    <span>Nhân viên</span>
+                }
+                @if(Model.Quyen==1){
+                <span>Quản trị website</span>
+                }
+
+
+
+            </div>
+        </div>
+        @using (Html.BeginForm("Delete", "User", FormMethod.Post, htmlAttributes: new { @style = "margin-top:20px" }))
+        {
+            @Html.AntiForgeryToken()
+            <input name="tentk" value="@Model.TenDangNhap" hidden />
+            <input name="hoten" value="@Model.HoTen" hidden />
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-default" /> 
+                @Html.ActionLink("Quay lại", "Index")
+            </div>
+        }
+    </div>
+    @if (ViewBag.Error != null)
+    {
+        <br />
+        <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+    }
+</div>
+
+
+

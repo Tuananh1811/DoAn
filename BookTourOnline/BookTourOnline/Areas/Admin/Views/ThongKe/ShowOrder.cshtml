@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Model.EF.OrderDetail>
+@{
+    ViewBag.Title = "Doanh thu trong tháng";
+    // Layout = "~/Views/Shared/_Layout.cshtml";
+
+   Layout= "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<h2>Doanh thu trong tháng</h2>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TourID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenTour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <td>Tổng tiền</td>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TourID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>@((item.Quantity.GetValueOrDefault(0)*item.Price.GetValueOrDefault(0)).ToString("N0"))</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+
+
+        </tr>
+    }
+
+</table>

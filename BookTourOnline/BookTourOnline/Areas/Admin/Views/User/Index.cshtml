@@ -1,0 +1,229 @@
+﻿@model PagedList.IPagedList<Model.EF.TaiKhoan>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Quản lý người dùng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<h2>Quản lý tài khoản</h2>
+@*@using (Html.BeginForm("Create", "User", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-lg-12 row">
+
+            <div class="col-md-2">
+                <button type="submit" style="background-color: #E04ECA; color:#fff; font-weight:bold;">Tạo tài khoản</button>
+            </div>
+        </div>
+
+    </div>*@
+@* } *@
+<br />
+@using (Html.BeginForm("Index", "User", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-lg-12 row">
+            <div class="col-md-5">
+                <input type="text" value="@ViewBag.searchString" name="searchString" style="border:1px solid #fff; padding-left:5px;" placeholder="Tìm kiếm" />
+            </div>
+            <div class="col-md-2">
+                <button type="submit" style="background-color: #E04ECA; color:#fff; font-weight:bold;">Tìm kiếm</button>
+            </div>
+        </div>
+
+    </div>
+}
+
+<br />
+<table class="table table-bordered text-center" style="font-size:14px">
+    <thead class=" text-primary ">
+        <tr>
+            <th>
+                Tên tài khoản
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Họ tên
+            </th>
+            <th>
+                Quyền
+            </th>
+            <th class="text-center">
+                Trạng thái
+            </th>
+            <th class="text-center">
+                Hành động
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @item.TenDangNhap
+            </td>
+            <td>
+                @item.Email
+            </td>
+            <td>
+                @item.SoDienThoai
+            </td>
+            <td>
+                @item.DiaChi
+            </td>
+            <td>
+                @item.HoTen
+            </td>
+
+            @if (@item.Quyen == -1)
+            {
+                <td>Khách hàng</td>
+                if (item.TrangThai == false)
+                {
+                    <td>Không hoạt động</td>
+                }
+                else
+                {
+                    <td>Đang hoạt động</td>
+                }
+                <td>
+                    @*<a href="/Admin/User/Edit/@item.TenDangNhap"><i class="fas fa-user-edit"></i></a>
+                <span> | </span>*@
+
+                    <a href="/Admin/User/Delete?tenTk=@item.TenDangNhap" class="item itemdelete" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top" title="Xóa">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            }
+            @if (@item.Quyen == 1)
+            {
+                <td>Quản trị</td>
+                if (item.TrangThai == false)
+                {
+                    <td>Không hoạt động</td>
+                }
+                else
+                {
+                    <td>Đang hoạt động</td>
+                }
+                <td style="max-width:400px">
+                    <div>
+                        @if (@item.TrangThai == false)
+                        {
+                            <a href="/Admin/User/LogOn?tenTk=@item.TenDangNhap" class="item" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top" title="Mở khóa">
+
+                                <i class="fas fa-lock"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Admin/User/LogDown?tenTk=@item.TenDangNhap" class="item" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top" title="Khóa">
+                                <i class="fas fa-lock-open"></i>
+                            </a>
+                        }
+                        @*<span> | </span>
+
+                    <a href="/Admin/User/EditPass?tenTk=@item.TenDangNhap" class="item" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top">
+                        Đổi mật khẩu
+                    </a>*@
+                        <span> | </span>
+                        <a href="/Admin/User/Edit/@item.TenDangNhap"><i class="fas fa-user-edit"></i></a>
+                        <span> | </span>
+
+                        <a href="/Admin/User/Delete?tenTk=@item.TenDangNhap" class="item itemdelete" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top" title="Xóa">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                </td>
+            }
+            @if (@item.Quyen == 0)
+            {
+                <td>Nhân viên</td>
+                if (item.TrangThai == false)
+                {
+                    <td>Không hoạt động</td>
+                }
+                else
+                {
+                    <td>Đang hoạt động</td>
+                }
+                <td style="max-width:400px">
+                    <div>
+                        @if (@item.TrangThai == false)
+                        {
+                            <a href="/Admin/User/LogOn?tenTk=@item.TenDangNhap" class="item" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top" title="Mở khóa">
+
+                                <i class="fas fa-lock"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Admin/User/LogDown?tenTk=@item.TenDangNhap" class="item" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top" title="Khóa">
+                                <i class="fas fa-lock-open"></i>
+                            </a>
+                        }
+                        @*<span> | </span>
+
+                    <a href="/Admin/User/EditPass?tenTk=@item.TenDangNhap" class="item" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top">
+                        Đổi mật khẩu
+                    </a>*@
+                        <span> | </span>
+                        <a href="/Admin/User/Edit/@item.TenDangNhap"><i class="fas fa-user-edit"></i></a>
+                        <span> | </span>
+
+                        <a href="/Admin/User/Delete?tenTk=@item.TenDangNhap" class="item itemdelete" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top" title="Xóa">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div>
+                </td>
+            }
+
+
+
+            <!--<td style="max-width:400px">
+    <div>
+        @if (@item.TrangThai == false)
+        {
+        <a href="/Admin/User/LogOn?tenTk=@item.TenDangNhap" class="item" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top" title="Mở khóa">
+
+            <i class="fas fa-lock"></i>
+        </a>
+        }
+        else
+        {
+    <a href="/Admin/User/LogDown?tenTk=@item.TenDangNhap" class="item" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top" title="Khóa">
+        <i class="fas fa-lock-open"></i>
+    </a>
+        }-->
+            @*<span> | </span>
+
+        <a href="/Admin/User/EditPass?tenTk=@item.TenDangNhap" class="item" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top">
+            Đổi mật khẩu
+        </a>*@
+            <!--<span> | </span>
+            <a href="/Admin/User/Edit/@item.TenDangNhap"><i class="fas fa-user-edit"></i></a>
+            <span> | </span>
+
+            <a href="/Admin/User/Delete?tenTk=@item.TenDangNhap" class="item itemdelete" id=@item.TenDangNhap data-toggle="tooltip" data-placement="top" title="Xóa">
+                <i class="fas fa-trash-alt"></i>
+            </a>
+        </div>
+    </td>-->
+
+        </tr>
+        }
+    </tbody>
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.searchString }))

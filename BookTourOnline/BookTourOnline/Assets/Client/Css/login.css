@@ -1,0 +1,29 @@
+.login-container {
+    width: 60%;
+    margin: 30px auto;
+}
+
+.login-container h2 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+#form-login {
+    width: 90% !important;
+    margin: 50px auto !important;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 575px) {
+    .login-container {
+        width: 100%;
+        margin: 30px auto;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .login-container {
+        width: 100%;
+        margin: 30px auto;
+    }
+}

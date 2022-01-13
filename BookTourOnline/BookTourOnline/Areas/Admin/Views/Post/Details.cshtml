@@ -1,0 +1,66 @@
+﻿@model Model.EF.TinTuc
+
+@{
+    ViewBag.Title = "Chi tiết tin tức";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<h2>Chi tiết tin tức</h2>
+
+<div>
+ 
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TaiKhoan.TenDangNhap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan.TenDangNhap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTaNgan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTaNgan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTaChiTiet)
+        </dt>
+
+        <dd>
+          @Html.Raw(Model.MoTaChiTiet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayCapNhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayCapNhat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaTinTuc }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>

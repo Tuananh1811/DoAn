@@ -1,0 +1,27 @@
+﻿@model Model.EF.LoaiKhachHang
+
+@{
+    ViewBag.Title = "Chi tiết";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+
+
+<div>
+    <h4>Chi tiết loại khách hàng</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaLoaiKhachHang }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>

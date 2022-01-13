@@ -1,0 +1,48 @@
+﻿@model Model.EF.HinhAnh
+
+@{
+    ViewBag.Title = "Xóa ảnh";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<h3>Bạn có chắc chắn muốn xóa ảnh này?</h3>
+<div>
+  
+    <dl class="dl-horizontal">
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tour.TenTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tour.TenTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenHinhAnh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenHinhAnh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>

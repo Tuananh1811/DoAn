@@ -1,0 +1,78 @@
+﻿@model PagedList.IPagedList<Model.EF.HinhAnh>
+
+@using PagedList.Mvc;
+@*@using System.Web.Optimization*@
+
+@{
+    ViewBag.Title = "Danh sách ảnh";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+
+<h2>Quản lý danh thư viện ảnh</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Images", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-lg-12 row">
+            <div class="col-md-5">
+                <input type="text" value="@ViewBag.searchString" name="searchString" style="border:1px solid #fff; padding-left:5px;" placeholder="Tìm kiếm" />
+            </div>
+            <div class="col-md-2">
+                <button type="submit" style="background-color: #E04ECA; color:#fff; font-weight:bold;">Tìm kiếm</button>
+            </div>
+        </div>
+
+    </div>
+}
+<br />
+<table class="table table-bordered text-center">
+    <tr>
+       
+        <th>
+
+            Tên tour
+        </th>
+        <th>
+
+            Tên hình ảnh
+        </th>
+        <th>
+
+            Tiêu đề ảnh
+        </th>
+        <th>Hành động</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Tour.TenTour)
+            </td>
+            <td>
+                @{
+                    string ImagePath = "~/wwwroot/images/" + item.TenHinhAnh;
+
+                }
+                <img src="@Url.Content(ImagePath)" width="150" />
+                <br />
+                @Html.DisplayFor(modelItem => item.TenHinhAnh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuDe)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MaHinhAnh }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.MaHinhAnh }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaHinhAnh })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.searchString }))

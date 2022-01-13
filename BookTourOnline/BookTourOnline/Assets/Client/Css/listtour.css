@@ -1,0 +1,101 @@
+.filter {
+    margin-top: 30px !important;
+    background-color: #f1f2f6;
+    text-align: left;
+    padding: 10px 10px !important;
+}
+
+.filter .search {
+    margin-bottom: 20px !important;
+    padding-bottom: 20px !important;
+    border-bottom: 1px solid #bbb;
+}
+
+.filter .search h6 {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+/*.active {
+    height: 43px;
+    color: white;*/
+   /* background: #0f4256;
+    background: rgba(15, 66, 86, .85);*/
+/*}*/
+.filter .search input {
+    outline: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.filter .search button {
+    border: 0;
+    color: #fff;
+    outline: 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    /* height: 50px; */
+    transition: all .3s ease;
+    background-color: #a5190e;
+    padding: 5px;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.inspired-list-tour {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.block-tour-category {
+    padding: 10px 8px !important;
+}
+
+.price-tour {
+    color: #b2910e;
+    font-weight: 700;
+}
+
+#also-like,
+.page-charm-the-sense-landing #also-like {
+    padding-bottom: 50px;
+}
+
+#also-like {
+    background: url('../images/bg-red-pattern.png') 50%;
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#also-like:before,
+.page-charm-the-sense-landing #also-like:before,
+.page-plan-your-trip-landing #also-like:before,
+.page-thing-to-do-events #also-like:before,
+.page-thing-to-do-landing #also-like:before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 1px solid #f7bd01;
+}
+
+#also-like .container,
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.northwell {
+    font-size: 80px;
+    /* font-family: 'Ephesis', cursive; */
+    font-family: 'Cherish', cursive;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 4px;
+}

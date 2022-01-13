@@ -1,0 +1,36 @@
+﻿@model Model.EF.TinTuc
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_layoutDetail.cshtml";
+}
+@section style{
+    <link href="~/Assets/Client/Css/tourdetail.css" rel="stylesheet" />
+    <link href="~/Assets/Client/Css/new-detail.css" rel="stylesheet" />
+}
+<div class="content">
+    <div class="container-fluid no-margin">
+        <div class="block-img-detail">
+            <img src="~/wwwroot/images/@Model.HinhAnhMinhHoa" alt="">
+            <h1 class="font-effect text-center en">
+                @Model.TieuDe
+            </h1>
+        </div>
+    </div>
+    <div class="container-content-detail row no-margin no-padding">
+        <div class="block-new-detail ">
+            <div class="wrap-share text-right">
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-flickr"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-wpexplorer"></i></a></li>
+                </ul>
+            </div>
+            <div class="overview">
+               @Html.Raw(@Model.MoTaChiTiet)
+            </div>
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,44 @@
+﻿@model Model.EF.TaiKhoan
+
+@{
+    ViewBag.Title = "Thay đổi mật khẩu";
+    Layout = "~/Views/Shared/_LayoutCart.cshtml";
+}
+
+<div class=" row no-margin no-padding" style="width:90%; margin: 30px auto !important;">
+    <div class="row">
+        <div class="col-md-12 row">
+            <div class="col-md-7 " style="margin:0px auto; padding:40px 40px; background-color:#fff; border-radius:5px;box-shadow:0px 10px 8px -5px #7f8fa6 !important;">
+                <h4>Thay đổi mật khẩu</h4>
+
+                <br />
+                @using (Html.BeginForm("EditPassAcc", "User", FormMethod.Post))
+                {
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.TenDangNhap, htmlAttributes: new { @class = "text", @placeholder = "Họ tên", @style = "padding-left: 5px;outline: none; ", @hidden = "true" })
+                    <div class="form_infor-input">
+                        @Html.LabelFor(model => model.MatKhau, "Mật khẩu cũ", htmlAttributes: new { @class = "lable" })
+                        <input name="mkcu" placeholder=" Nhập mật khẩu cũ" type="password" style="padding-left: 5px; outline: none;" class="text" />
+
+                    </div>
+                    <br />
+                    <div class="form_infor-input">
+                        @Html.LabelFor(model => model.MatKhau,"Mật khẩu mới", htmlAttributes: new { @class = "lable" })
+                        @Html.PasswordFor(model => model.MatKhau, htmlAttributes: new { @class = "text", @placeholder = " Nhập mật khẩu mới", @style = "padding-left: 5px;outline: none; " })
+
+                    </div>
+
+                    <br />
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Cập nhật" style="background-color: #a5190e; color:#fff; border:none;padding:8px 10px; border-radius:5px;" />
+                        </div>
+                    </div>
+                    <a href="/Home/Index" style=" text-decoration: none; font-size: 15px;">Hủy bỏ</a>
+                }
+            </div>
+            </div>
+        </div>
+    </div>
+
+               

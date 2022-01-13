@@ -1,0 +1,54 @@
+.register-container {
+    width: 60%;
+    margin: 30px auto;
+    /* background-color: blanchedalmond; */
+}
+
+.register-container h2 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#form {
+    width: 80% !important;
+    margin: 30px auto !important;
+}
+
+small {
+    visibility: hidden;
+}
+
+.error>small {
+    color: red;
+    visibility: visible;
+}
+
+.error>input {
+    border: 1px solid red;
+}
+
+.success>input {
+    border: 1px solid green;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 575px) {
+    .register-container {
+        width: 100%;
+        margin: 30px auto;
+    }
+    #form {
+        width: 90% !important;
+        margin: 0px auto !important;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .register-container {
+        width: 100%;
+        margin: 30px auto;
+    }
+    #form {
+        width: 90% !important;
+        margin: 0px auto !important;
+    }
+}

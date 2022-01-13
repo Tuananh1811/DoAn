@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Model.EF.OrderDetail>
+@{
+    ViewBag.Title = "Lịch sử đặt tour";
+    Layout = "~/Views/Shared/_LayoutCart.cshtml";
+}
+
+
+<div style="width:80%; margin:30px auto">
+
+    <h4 style="">Lịch sử đặt tour</h4>
+    <hr style="width:90px; color:#b2910e; height:4px;opacity:1"/>
+    <br />
+
+    <table class="table text-center table-striped table-hover table-bordered">
+        <thead class="">
+            <tr style="background-color: #95afc0; color:aliceblue">
+                <th>Ngày đặt</th>
+                <th scope="col">Tên tour</th>
+                <th scope="col">Số lượng người</th>
+                <th scope="col">Giá</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th scope="col">Hành động</th>
+            </tr>
+        </thead>
+        <tbody class="table-striped">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.CreateDate</th>
+                    <td scope="row">@item.TenTour</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Price.GetValueOrDefault(0).ToString("N0"))</td>
+                    <td>@((item.Quantity.GetValueOrDefault(0)*item.Price.GetValueOrDefault(0)).ToString("N0"))</td>
+                    <td>Đã đặt</td>
+                    <td>Xem chi tiết</td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenTour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+            </td>
+        </tr>
+    }
+
+</table>*@

@@ -1,0 +1,182 @@
+﻿@model List<Model.ViewModel.TourViewModel>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section style
+{
+
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/Assets/Client/Css/listtour.css" rel="stylesheet" />
+
+    <link href="~/Assets/Client/Css/news.css" rel="stylesheet" />
+    <link href="~/Assets/Client/Css/slick.css" rel="stylesheet" />
+
+}
+
+
+<div class="inspired-list-tour">
+    <div class="content_top">
+        <div class="heading">
+            <h3>Kết quả tìm kiếm theo từ khoá: @ViewBag.Keyword</h3>
+        </div>
+
+
+    </div>
+    <div class="row container-fluid no-padding">
+        <div class="filter col-lg-3 col-md-4 no-margin no-padding">
+            <div class="search container-fluid no-padding no-margin">
+                <h6>Tìm kiếm</h6>
+                @using (Html.BeginForm())
+                {
+                    <p>
+                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                        <input type="submit" value="Tìm kiếm" style="background-color: #a5190e;color:#fff;border:none;padding:5px 0px" />
+                    </p>
+                }
+
+                <div class="search container-fluid no-padding no-margin" style="padding:0px !important;">
+                    <h6>Tìm kiếm theo khoảng ngày</h6>
+                    <select class="form-select" name="" id="">
+                        <option selected>Chọn khoảng ngày</option>
+                        <option value=""> từ 1-2 ngày</option>
+                        <option value=""> từ 1-5 ngày</option>
+                        <option value=""> 5 ngày trở lên</option>
+                    </select>
+                </div>
+                <br />
+
+
+            </div>
+        </div>
+        <div class="inspired-nav col-lg-9 col-md-8">
+            <section class="inspires-top">
+                <div id="inspire-all" class="inspire ">
+                    <div class="row">
+                        <ul class="nav" style="text-align:left">
+                            <li class="nav-item ">
+                                <a class="nav-link disabled" aria-current="page" href="#">Sắp xếp</a>
+                            </li>
+                            <li class="nav-item ">
+
+                                <a class="style_filter-li " style="min-width:70px;" href="@Url.Action("Index" , "TourCategory", new { sortOrder  = "Gia" })">Giá <i class="fas fa-chevron-circle-up"></i></a>
+                            </li>
+
+                            <li class="nav-item ">
+                                <a class="style_filter-li " style="min-width:70px;" href="@Url.Action("Index" , "TourCategory", new { sortOrder =  "gia_desc"})">Giá  <i class="fas fa-chevron-circle-down"></i></a>
+                            </li>
+
+
+                            <li class="nav-item">
+
+                                <a class="style_filter-li" style="min-width:85px;" href="@Url.Action("Index" , "TourCategory", new { sortOrder = "gia_1"})">0 - 3Tr</a>
+
+                            </li>
+                            <li class="nav-item ">
+
+                                <a class="style_filter-li " style="min-width:85px;" href="@Url.Action("Index" , "TourCategory", new { sortOrder = "gia_2" })">3Tr - 10Tr</a>
+
+                            </li>
+                            <li class="nav-item ">
+
+                                <a class="style_filter-li " style="min-width:85px;" href="@Url.Action("Index" , "TourCategory", new { sortOrder = "gia_3" })">10Tr - 25Tr</a>
+
+                            </li>
+                            <li class="nav-item ">
+
+                                <a class="style_filter-li " style="min-width:85px;" href="@Url.Action("Index" , "TourCategory", new { sortOrder = "gia_4" })"><i class="fa fa-chevron-circle-right"></i> 25Tr</a>
+
+                            </li>
+                            <li class="nav-item ">
+
+                                <a class="style_filter-li " style="min-width:85px;" href="@Url.Action("Index" , "TourCategory", new { sortOrder = "delete" })">Xóa bộ lọc</a>
+
+                            </li>
+
+
+                        </ul>
+                        @if (Model.Count > 0)
+                        {
+                            foreach (var item in Model)
+                            {
+                                var url = "/chi-tiet/" + @item.Name + "-" + item.ID;
+                                <div class="col-xs-12 col-lg-4 col-md-6 col-sm-6 no-padding block-tour-category">
+                                    <article class="big" style="height:280px">
+                                        <a href="@url">
+
+                                            <img src="~/wwwroot/images/@item.Images">
+                                            <div class="inspire--desc">
+                                                <h6>
+                                                    @item.DiaDiem
+                                                </h6>
+                                                <p class="montserrat-bold">
+                                                    @item.Name
+                                                    <br>
+                                                    <span> @item.ThoiGian </span> - <span class="price-tour">@(item.Price.GetValueOrDefault(0).ToString("#,###")) VND </span>
+                                                </p>
+
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                            }
+
+                            <!--Phân trang-->
+                            if (ViewBag.TotalPage > 1)
+            {
+                var pageDisplay = (int)ViewBag.MaxPage;
+                int totalPage = (int)ViewBag.TotalPage;
+                int currentPage = ((int)ViewBag.Page);
+
+                // Create numeric links
+                var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2);
+                var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
+
+                var link = "/tim-kiem?keyword=" + ViewBag.Keyword;
+                <nav>
+                    <ul class="pagination">
+                        @if (currentPage > ViewBag.First)
+                        {
+                            <li><a href="@link&page=@ViewBag.First" title="Trang đầu" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                            <li>
+                                <a href="@link&page=@ViewBag.Prev" title="Trang trước" class="prev"><i class="fa fa-angle-left"></i></a>
+                            </li>
+
+                        }
+                        @for (int i = startPageIndex; i <= endPageIndex; i++)
+                        {
+                            if (currentPage == i)
+                            {
+
+                                <li> <a href="@link&page=@i" class="active" title="Trang @i">@i</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@link&page=@i" title="Trang @i" class="pos">@i</a></li>
+                            }
+                        }
+                        @if (currentPage < totalPage)
+                        {
+                            <li><a href="@link&page=@ViewBag.Next" class="next" title="Trang sau"><i class="fa fa-angle-right"></i></a></li>
+                            <li> <a href="@link&page=@ViewBag.Last" class="last" title="Trang cuối"><i class="fa fa-angle-double-right"></i></a></li>
+                        }
+
+                    </ul>
+                </nav>
+
+            }
+                        }
+                        else
+                        {
+                            <span>Không có tour nào thỏa mãn từ khóa</span>
+                        }
+
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    </div>
